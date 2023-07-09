@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'Screens/app_with_floating_button.dart';
 import 'Screens/login_screen.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class OurQuizzApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: LoginScreen(),
+      home: ScrollPage(),
     );
   }
 }
