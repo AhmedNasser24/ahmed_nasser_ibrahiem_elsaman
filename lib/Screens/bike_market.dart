@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ScrollPage extends StatelessWidget {
-  const ScrollPage({super.key});
+class Bike_Market extends StatelessWidget {
+  const Bike_Market({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +16,7 @@ class ScrollPage extends StatelessWidget {
             // Perform action when the button is pressed
             
           },
+          
           icon: Icon(Icons.add),
           label: Text('Add Item'),
           backgroundColor: Colors.blue,
@@ -26,9 +27,9 @@ class ScrollPage extends StatelessWidget {
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
-          heroTag: 'addButton',
+          // heroTag: 'addButton',
           splashColor: Colors.yellow,
-          focusColor: Colors.red,
+          // focusColor: Colors.red,
           hoverColor: Colors.green,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:loginscreen/Screens/bike_market.dart';
+import 'package:loginscreen/Screens/quizkind.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -7,24 +9,28 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     
     final screenWidth = MediaQuery.of(context).size.width;
+    final screenheight = MediaQuery.of(context).size.height;
     final buttonWidth = screenWidth * 0.4;
     return  Scaffold(
-        body: Stack(
+      // resizeToAvoidBottomInset: false,
+        
+        
+        body : SafeArea (
+        child : Stack(
+          alignment: Alignment.bottomCenter,
           children: [
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/planet.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: FractionallySizedBox(
-                heightFactor: 0.5,
-                child: Container(
-                  padding: EdgeInsets.all(16.0),
+             Container(
+              width: screenWidth,
+              height: screenheight / 2 ,
+                 padding: EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
@@ -32,7 +38,8 @@ class LoginScreen extends StatelessWidget {
                       topRight: Radius.circular(40.0),
                     ),
                   ),
-                  child: Column(
+                  child:SingleChildScrollView(
+                    child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
@@ -59,7 +66,10 @@ class LoginScreen extends StatelessWidget {
                         width: buttonWidth ,
                         
                         child: OutlinedButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => const QuizKind())) ;
+                          },
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all(
                               RoundedRectangleBorder(
@@ -69,7 +79,7 @@ class LoginScreen extends StatelessWidget {
                             backgroundColor: 
                               MaterialStateProperty.all(Color.fromARGB(255, 73, 224, 13)) 
                           ),
-                          child: Text( 'Login',
+                          child: Text( 'Login ',
                             style: TextStyle(
                               fontSize: 16.0,
                               color: Colors.white
@@ -92,11 +102,13 @@ class LoginScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
-            ),
+              
+             )
           ],
-        ),
-    );
+          ),
+          )
+        );
+    
   }
 }
 
