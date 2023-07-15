@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:loginscreen/Screens/bike_market.dart';
+// import 'package:loginscreen/Screens/bike_market.dart';
 import 'package:loginscreen/Screens/quizkind.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
-
+   LoginScreen({super.key});
+  final _login_form_key = GlobalKey<FormState>() ;
   @override
   Widget build(BuildContext context) {
     
@@ -30,8 +30,8 @@ class LoginScreen extends StatelessWidget {
              Container(
               width: screenWidth,
               height: screenheight / 2 ,
-                 padding: EdgeInsets.all(16.0),
-                  decoration: BoxDecoration(
+                 padding: const  EdgeInsets.all(16.0),
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40.0),
@@ -39,68 +39,89 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   child:SingleChildScrollView(
-                    child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        'Login',
-                        style: TextStyle(
-                          fontSize: 24.0,
-                          fontWeight: FontWeight.bold,
+                    child: Form(
+                      key: _login_form_key ,
+                      child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Text(
+                          'Login',
+                          style: TextStyle(
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      TextField(
-                        decoration: InputDecoration(
-                          labelText: 'Email',
-                        ),
-                      ),
-                      SizedBox(height: 16.0),
-                      TextField(
-                        decoration: InputDecoration(
-                          labelText: 'Password',
-                        ),
-                        obscureText: true,
-                      ),
-                      SizedBox(height: 24.0),
-                      Container(
-                        width: buttonWidth ,
-                        
-                        child: OutlinedButton(
-                          onPressed: (){
-                            Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) => const QuizKind())) ;
+                        TextFormField(
+                          validator: (value) {
+                            if (value!.isEmpty){
+                              return "empty" ;
+                            }
+                            else if (value.length < 5 ){
+                              return "your email must be greater than 5 character" ;
+                            }
+                            else if ( value[0] != value[0].toUpperCase()) {
+                              return "first character must be upper case" ;
+                            }
                           },
-                          style: ButtonStyle(
-                            shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30.0),
+                          decoration:  InputDecoration(
+                            labelText: 'Email',
+                            filled: true ,
+                            hintText: 'Enter you email' ,
+                            prefixIcon:  Icon(Icons.person),
+                            border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 16.0),
+                        // TextField(
+                        //   decoration: InputDecoration(
+                        //     labelText: 'Password',
+                        //   ),
+                        //   obscureText: true,
+                        // ),
+                        const SizedBox(height: 24.0),
+                         Container(
+                          width: buttonWidth ,
+                          
+                          child: ElevatedButton(
+                            onPressed: (){
+                              if ( _login_form_key.currentState!.validate()){
+                              Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (context) => const QuizKind())) ;}
+                            },
+                            style: ButtonStyle(
+                              shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                ),
+                              ),
+                              backgroundColor: 
+                                MaterialStateProperty.all(Color.fromARGB(255, 73, 224, 13)) 
+                            ),
+                            child: const Text( 'Login ',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                color: Colors.white
                               ),
                             ),
-                            backgroundColor: 
-                              MaterialStateProperty.all(Color.fromARGB(255, 73, 224, 13)) 
                           ),
-                          child: Text( 'Login ',
+                        ),
+                        const SizedBox(height: 16.0),
+                       const Align(
+                          alignment: Alignment.centerRight ,
+                            child : Text(
+                            'new to quiz , register',
                             style: TextStyle(
-                              fontSize: 16.0,
-                              color: Colors.white
+                              fontSize: 14.0,
+                              color: Colors.grey,
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(height: 16.0),
-                      Align(
-                        alignment: Alignment.centerRight ,
-                          child : Text(
-                          'new to quiz , register',
-                          style: TextStyle(
-                            fontSize: 14.0,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ),
-                      
-                    ],
-                  ),
+                        
+                      ],
+                                      ),
+                    ),
                 ),
               
              )

@@ -13,10 +13,10 @@ class OpeningScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Container(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          color: Color.fromARGB(255, 154, 70, 168),
+          color: const Color.fromARGB(255, 154, 70, 168),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -31,10 +31,10 @@ class OpeningScreen extends StatelessWidget {
               ),
               // Image.network(
               //     "https://www.shutterstock.com/image-vector/quiz-check-speech-bubble-sign-260nw-281084969.jpg")
-              Text("ITI Quiz App",
+              const Text("ITI Quiz App",
                   style:
 
-                  TextStyle(
+                   TextStyle(
                       color: Color.fromARGB(255, 3, 233, 23),
                       fontSize: 35,
                       fontWeight: FontWeight.bold),
@@ -42,7 +42,7 @@ class OpeningScreen extends StatelessWidget {
               const SizedBox(
                 height: 12,
               ),
-              Text("We Are Creative, enjoy our App",
+              const Text("We Are Creative, enjoy our App",
                     style: 
     
                    TextStyle(
@@ -55,7 +55,7 @@ class OpeningScreen extends StatelessWidget {
               //   height: MediaQuery.of(context).size.height * 0.3,
               // ),
 
-              Spacer(),
+              const Spacer(),
 
               
               Container(

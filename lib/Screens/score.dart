@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loginscreen/Screens/login_screen.dart';
+// import 'package:loginscreen/Screens/login_screen.dart';
 import 'package:loginscreen/Screens/opening_screen.dart';
 
 class Score extends StatelessWidget {
@@ -21,7 +21,7 @@ class Score extends StatelessWidget {
             
             
           
-          padding: EdgeInsets.all(30),
+          padding: const EdgeInsets.all(30),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center ,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -50,8 +50,8 @@ class Score extends StatelessWidget {
                   height: MediaQuery.of(context).size.height / 10,
                 ),
                 TextButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => OpeningScreen() ));
-                }, child: Text("try again" , style: TextStyle(fontSize: 25 , fontWeight: FontWeight.w500 , color: Colors.red), ))
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const OpeningScreen() ));
+                }, child: const  Text("try again" , style: TextStyle(fontSize: 25 , fontWeight: FontWeight.w500 , color: Colors.red), ))
             ],
           )
         )

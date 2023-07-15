@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'quiz_queston.dart';
+import 'package:loginscreen/Screens/quiz_queston.dart';
+import 'package:loginscreen/used_alot/container.dart';
 
 class QuizKind extends StatelessWidget {
   const QuizKind({super.key});
@@ -7,78 +8,52 @@ class QuizKind extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenwidth = MediaQuery.of(context).size.width ;
-    final screenheight = MediaQuery.of(context).size.height ;
+    // final screenheight = MediaQuery.of(context).size.height ;
+    
     return  Scaffold(
-      appBar:  AppBar(  title: const  Center( child : Text("choose your quiz" , style: TextStyle(fontSize: 30 , fontWeight: FontWeight.bold)  )), 
+      
+      appBar:  AppBar( 
+        
+        automaticallyImplyLeading: false , 
+        title: const Text("choose your quiz" , style: TextStyle(fontSize: 30 , fontWeight: FontWeight.bold) 
+       ), 
       backgroundColor: Colors.green, 
       foregroundColor: Colors.white,
       
       ),
-      body: Container(
-        height: double.infinity ,
-          child : Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                
-                child :Container(
-                  
-                  width: screenwidth ,
-                  decoration :const BoxDecoration(
-                    color: Color.fromARGB(255, 189, 171, 5) ,
-                  ),
-                  child: TextButton(onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Question()));
-                  },
-                    
-                    child: const Text("Sport Quiz" , 
-                    style: TextStyle( color: Colors.white , fontSize: 30 , fontWeight: FontWeight.bold ,
-                    ),
-                    ),
-                    
-                  ),
-                )  ),
-                Expanded(
-                  
-                  child : Container(
-                  width: screenwidth  ,
-                  decoration :const BoxDecoration(
-                    color: Colors.purple ,
-                  ),
-                  child: TextButton(onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Question()));
-                  },
-                  
-                    child: const Text("History Quiz" , 
-                    style: TextStyle( color: Colors.white , fontSize: 30 , fontWeight: FontWeight.bold ,
-                    ),
-                    ),
-                    
-                  ),
-                )),
-                Expanded(
-                 
-                child : Container(
-                  width: screenwidth  ,
-                  decoration :const BoxDecoration(
-                    color: Colors.red ,
-                  ),
-                  child: TextButton(onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Question()));
-                  },
-                  
-                    child: const Text("Math Quiz" , 
-                    style: TextStyle( color: Colors.white , fontSize: 30 , fontWeight: FontWeight.bold ,
-                    ),
-                    ),
-                    
-                  ),
-                ))
-              ], 
+      body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            QuizKindContainer(
+              containercolor: Colors.orange,
+              quizname: "Sport Quiz",
+              goingto: (){ 
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Question(
+                  questioncolor: Colors.orange , quizname: "Sport Quiz",
+                )) ) ;
+              },
             ),
-        
-      ),
+            
+            QuizKindContainer(
+              containercolor: Colors.purple,
+              quizname: "History Quiz",
+              goingto: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Question(
+                questioncolor: Colors.purple, quizname: "History Quiz",
+              ))) ;
+              },
+            ),
+            QuizKindContainer(
+              containercolor: Colors.red,
+              quizname: "Math Quiz",
+              goingto: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Question(
+                questioncolor: Colors.red, quizname: "Math Quiz",))) ;
+              },
+            )
+          ], 
+        ),
    
     );
     
