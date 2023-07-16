@@ -2,33 +2,41 @@ import 'package:flutter/material.dart';
 
 
 class Answer extends StatelessWidget {
-  String? answrite ;
-  Color? anscolor ; 
-  Answer({super.key , this.anscolor , this.answrite});
+  final String? answrite ;
+  final Color? anscolor ; 
+  final Function() press ;
+  Answer({super.key , this.anscolor , this.answrite , required this.press});
   
   @override
   Widget build(BuildContext context) {
     final screenwidth = MediaQuery.of(context).size.width ;
-    final screenheight = MediaQuery.of(context).size.height ;
-    return Container(
-                  margin: const EdgeInsets.all(5),
-                  padding: const EdgeInsets.all( 8 ),
-                  width: screenwidth / 3 ,
-                  
-                  decoration: BoxDecoration(
-                    color: anscolor  ,
-                    borderRadius: BorderRadius.circular(35)
-                  ),
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Checkbox(value: false, onChanged: (value) {}  , shape: const CircleBorder(),) , 
-                        Text(answrite! , 
-                        style: const TextStyle( fontSize: 20 , fontWeight: FontWeight.normal ,
-                        color: Colors.white ),),
-                      ],
-                    ),
-                  ), );
+    // final screenheight = MediaQuery.of(context).size.height ;
+    
+    return Padding(
+      padding: const EdgeInsets.all(5),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20), // Adjust the radius as needed
+              ),
+              backgroundColor: anscolor
+            ),
+         
+        onPressed: press,
+        child: SizedBox(
+          
+          width: screenwidth / 2,
+          
+          child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(
+                          child: Text(answrite! , 
+                          style: const  TextStyle( fontSize: 20 , fontWeight: FontWeight.normal ,
+                          color: Colors.white ),),
+                        ),
+                      ),
+        ),
+      ),
+    );
   }
 }

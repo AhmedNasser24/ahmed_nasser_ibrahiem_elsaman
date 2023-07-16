@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-// import 'package:loginscreen/Screens/login_screen.dart';
+import 'package:loginscreen/Screens/login_screen.dart';
 import 'package:loginscreen/Screens/opening_screen.dart';
 
 class Score extends StatelessWidget {
-  const Score({super.key});
+  final int score ;
+  final int numquestion ;
+  final String state ; 
+  const Score({super.key , required this.numquestion , required this.score , required this.state});
 
   @override
   Widget build(BuildContext context) {
@@ -23,35 +26,34 @@ class Score extends StatelessWidget {
           
           padding: const EdgeInsets.all(30),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center ,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly ,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Text( state ,  style: const  TextStyle(fontSize: 40 , fontWeight: FontWeight.bold , color: Colors.black), ) ,
               RichText(
-                  text: const TextSpan(
-                  text: "Congaratulation" ,
-                  style: TextStyle(fontSize: 25 , fontStyle: FontStyle.italic , color: Colors.green),
+                  text:  TextSpan(
+                  
+                  style: const TextStyle(fontSize: 25 , fontStyle: FontStyle.italic , color: Colors.green),
                   children: <TextSpan>[
                     TextSpan(
-                      text: ' Ahmed Nasser ',
-                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue , fontSize: 30),
+                      text: usernametextform.text  ,
+                      style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.blue , fontSize: 30),
                     ),
-                    TextSpan(
+                    const TextSpan(
                       text:  ' your score is ' ,
                       style: TextStyle(fontSize: 25 , fontStyle: FontStyle.italic , color: Colors.green)
                     ),
-                    TextSpan(
-                      text: ' 19 / 20 ',
-                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue , fontSize: 30),
+                     TextSpan(
+                      text: "$score / $numquestion",  
+                      style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.blue , fontSize: 30),
                     ),
                   ],
                 ),
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height / 10,
-                ),
+                
                 TextButton(onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context) => const OpeningScreen() ));
-                }, child: const  Text("try again" , style: TextStyle(fontSize: 25 , fontWeight: FontWeight.w500 , color: Colors.red), ))
+                }, child: const  Text("Try again" , style: TextStyle(fontSize: 25 , fontWeight: FontWeight.w500 , color: Colors.red), ))
             ],
           )
         )

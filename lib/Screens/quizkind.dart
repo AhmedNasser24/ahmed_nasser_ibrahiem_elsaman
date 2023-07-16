@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loginscreen/Screens/quiz_queston.dart';
+import 'package:loginscreen/global/my_global_data.dart';
 import 'package:loginscreen/used_alot/container.dart';
 
 class QuizKind extends StatelessWidget {
@@ -7,7 +8,7 @@ class QuizKind extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenwidth = MediaQuery.of(context).size.width ;
+    // final screenwidth = MediaQuery.of(context).size.width ;
     // final screenheight = MediaQuery.of(context).size.height ;
     
     return  Scaffold(
@@ -30,7 +31,7 @@ class QuizKind extends StatelessWidget {
               quizname: "Sport Quiz",
               goingto: (){ 
                 Navigator.push(context, MaterialPageRoute(builder: (context) => Question(
-                  questioncolor: Colors.orange , quizname: "Sport Quiz",
+                  questioncolor: Colors.orange , quizname: "Sport Quiz", questionkind: sportsTest,
                 )) ) ;
               },
             ),
@@ -40,7 +41,7 @@ class QuizKind extends StatelessWidget {
               quizname: "History Quiz",
               goingto: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => Question(
-                questioncolor: Colors.purple, quizname: "History Quiz",
+                questioncolor: Colors.purple, quizname: "History Quiz", questionkind: historyTest,
               ))) ;
               },
             ),
@@ -49,7 +50,7 @@ class QuizKind extends StatelessWidget {
               quizname: "Math Quiz",
               goingto: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => Question(
-                questioncolor: Colors.red, quizname: "Math Quiz",))) ;
+                questioncolor: Colors.red, quizname: "Math Quiz", questionkind: mathTest ,))) ;
               },
             )
           ], 

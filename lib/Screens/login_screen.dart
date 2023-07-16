@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:loginscreen/Screens/bike_market.dart';
 import 'package:loginscreen/Screens/quizkind.dart';
-
+final usernametextform = TextEditingController() ;
 class LoginScreen extends StatelessWidget {
    LoginScreen({super.key});
   final _login_form_key = GlobalKey<FormState>() ;
@@ -52,6 +52,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         TextFormField(
+                          controller: usernametextform ,
                           validator: (value) {
                             if (value!.isEmpty){
                               return "empty" ;
@@ -67,6 +68,7 @@ class LoginScreen extends StatelessWidget {
                             labelText: 'Email',
                             filled: true ,
                             hintText: 'Enter you email' ,
+                            
                             prefixIcon:  Icon(Icons.person),
                             border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30.0),
